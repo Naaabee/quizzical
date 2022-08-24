@@ -12,6 +12,7 @@
     transform: translate(-50%, -50%);
     width: 100%;
     height: auto;
+    background-color: transparent;
 }
 
 .start--title {
@@ -40,14 +41,17 @@
 }
 
 .blob1 {
-    background-color: none;
+    background-color: transparent;
     position: fixed;
-    top: 0px;
-    right: 0px;
+    top: -100px;
+    right: -100px;
     z-index: -999;
 }
 
 .blob2 {
-    position: absolute;
-    top: 0px;
+    background-color: transparent;
+    position: fixed;
+    bottom: -100px;
+    left: -100px;
+    z-index: -998;
 }

@@ -1,0 +1,53 @@
+* {
+    font-family: 'Inter';
+}
+
+.start--section {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+}
+
+.start--title {
+    font-family: 'Karla';
+    background-color: transparent;
+    color: #293264;
+    font-weight: 700;
+    font-size: 4rem;
+}
+
+.start--section > h4 {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: 10px;
+    background-color: transparent;
+}
+
+.start--button {
+    background-color: #4D5B9E;
+    border: none;
+    border-radius: 15px;
+    width: 200px;
+    height: 52px;
+    margin-top: 30px;
+    color: white;
+}
+
+.blob1 {
+    background-color: none;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: -999;
+}
+
+.blob2 {
+    position: absolute;
+    top: 0px;
+}

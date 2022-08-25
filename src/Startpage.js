@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Startpage.css'
+import { questionList } from './questionList'
 
 export default function Startpage() {
+
+    const [question, setQuestion] = useState(questionList.list.description[0].text)
+
+    useEffect(() => {
+        let index = 0
+        setInterval(() => {
+            if (index === 0) {
+                index += 1
+                setQuestion(questionList.list.description[index].text)            
+            } else if (index === 1) {
+                index += 1
+                setQuestion(questionList.list.description[index].text)
+            } else if (index === 2) {
+                index += 1
+                setQuestion(questionList.list.description[index].text)
+            } else if (index === 3) {
+                index += 1
+                setQuestion(questionList.list.description[index].text)
+            } else if (index === 4) {
+                index += 1
+                setQuestion(questionList.list.description[index].text)
+            } else {
+                index = 0
+                setQuestion(questionList.list.description[index].text)
+            }
+        }, 3000)
+    }, []) 
+
     return (
         <>
             <svg className='blob1' width="313" height="351" viewBox="0 0 313 351" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -9,7 +38,7 @@ export default function Startpage() {
             </svg>
             <div className='start--section'>
                 <h1 className='start--title'>Quizzical</h1>
-                <h4>Are you better than a monkey ?</h4>
+                <h4>{question}</h4>
                 <button className='start--button'>Start quiz</button>
             </div>
             <svg className='blob2' width="297" height="235" viewBox="0 0 297 235" fill="none" xmlns="http://www.w3.org/2000/svg">

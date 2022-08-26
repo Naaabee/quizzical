@@ -52,18 +52,3 @@
     transform: translateY(1px);
   }
 
-.blob1 {
-    background-color: transparent;
-    position: fixed;
-    top: -100px;
-    right: -100px;
-    z-index: -999;
-}
-
-.blob2 {
-    background-color: transparent;
-    position: fixed;
-    bottom: -100px;
-    left: -100px;
-    z-index: -998;
-}

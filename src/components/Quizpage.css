@@ -1,0 +1,68 @@
+hr {
+    margin-top: 15px;
+}
+
+.question--section {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.question--container {
+    width: 70%;
+    max-height: 80vh;
+    margin: 0 auto;
+    background-color: transparent;
+    overflow-y: scroll;
+}
+
+.question--container::-webkit-scrollbar {
+    display: none; 
+  }
+
+
+.question--tab {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.question--tab > h4 {
+    font-family: 'Karla';
+    color: #293264;
+}
+
+
+.question--list {
+    display: flex;
+    flex-flow: row;
+    list-style-type: none;
+    align-items: left;
+    font-family: 'Inter';
+    font-size: 10px;
+    font-weight: 500;
+    color: #293264;
+    margin-top: 12px;
+}
+
+.question--list > li {
+    padding: 4px 20px;
+    border: 0.8px solid #4D5B9E;
+    margin-right: 14px;
+    border-radius: 8px;
+}
+
+.question--button {
+    margin-top: 20px;
+    width: 120px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-size: 10px;
+    background-color: #4D5B9E;
+    color: white;
+}

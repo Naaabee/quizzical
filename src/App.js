@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Startpage from '../src/components/Startpage'
 import Quizpage from './components/Quizpage';
 
 
+
+
 function App() {
   const [click, setClick] = useState(false)
+  const [allQuiz, setAllQuiz] = useState()
+
+  useEffect(() => {
+    fetch("https://opentdb.com/api.php?amount=10")
+      .then(res => res.json())
+      .then(data => setAllQuiz(data.results.map(quiz => {
+        const { question, correct_answer, incorrect_answers } = quiz
+        return {
+          question: question,
+          correct_answer: correct_answer,
+          answers: [...incorrect_answers, correct_answer]
+        }
+      })))
+  }, [])
 
 
   function handleClick() {
@@ -19,7 +35,10 @@ function App() {
       </svg>
       <div className="App">
         {click ?
-          <Quizpage /> :
+          <Quizpage
+            question={allQuiz}
+
+          /> :
           <Startpage handleClick={handleClick} />
         }
       </div>

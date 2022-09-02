@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Startpage from '../src/components/Startpage'
 import Quizpage from './components/Quizpage';
+import { nanoid } from 'nanoid'
 
 
 
@@ -16,6 +17,7 @@ function App() {
       .then(data => setAllQuiz(data.results.map(quiz => {
         const { question, correct_answer, incorrect_answers } = quiz
         return {
+          id: nanoid(),
           question: question,
           correct_answer: correct_answer,
           answers: [...incorrect_answers, correct_answer]
@@ -28,6 +30,7 @@ function App() {
     setClick(prevState => !prevState)
   }
 
+
   return (
     <>
       <svg className='blob1' width="313" height="351" viewBox="0 0 313 351" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +39,7 @@ function App() {
       <div className="App">
         {click ?
           <Quizpage
-            question={allQuiz}
+            allQuiz={allQuiz}
 
           /> :
           <Startpage handleClick={handleClick} />

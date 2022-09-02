@@ -1,33 +1,41 @@
-import React from 'react'
+import React  from 'react'
 import './Quizpage.css'
-import he from 'he'
+import {decode} from 'html-entities'
+import Answers from './Answers'
 
 
-
-export default function Quizpage({ question, correct_answer, answers }) {
-
-    const questions = question.map(quest => {
-        return quest.question
+export default function Quizpage({ allQuiz }) {
+    
+    const data = allQuiz.map(quiz => {
+        return {
+            question: quiz.question,
+            id: quiz.id,
+            answers: quiz.answers,
+            correct_answer: quiz.correct_answer
+        }
     })
 
-    console.log(correct_answer)
-    console.log(answers)
+    // const [questionState, setQuestionState] = useState(data)
 
+   
 
+    const questions = data.map(question => {
+        return (
+            <div className='question--tab' key={question.id}>
+                    <h4>{decode(question.question)}</h4>
+                    <Answers 
+                        answers={question.answers} 
+                        key={question.id}
+                    />
+                    <hr></hr>
+                </div>
+        )
+    })
 
     return (
         <div className='question--section'>
             <div className='question--container'>
-                <div className='question--tab'>
-                    <h4>{questions}</h4>
-                    <ul className='question--list'>
-                        <li>1</li>
-                        <li>1</li>
-                        <li>1</li>
-                        <li>1</li>
-                    </ul>
-                    <hr></hr>
-                </div>
+                {questions}
             </div>
             <button className='question--button'>Check answers</button>
         </div>

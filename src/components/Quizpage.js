@@ -2,6 +2,7 @@ import React  from 'react'
 import './Quizpage.css'
 import {decode} from 'html-entities'
 import Answers from './Answers'
+import arrayShuffle from 'array-shuffle'
 
 
 export default function Quizpage({ allQuiz }) {
@@ -10,7 +11,8 @@ export default function Quizpage({ allQuiz }) {
         return {
             question: quiz.question,
             id: quiz.id,
-            answers: quiz.answers,
+            key: quiz.id,
+            answers: arrayShuffle(quiz.answers),
             correct_answer: quiz.correct_answer
         }
     })
@@ -25,7 +27,6 @@ export default function Quizpage({ allQuiz }) {
                     <h4>{decode(question.question)}</h4>
                     <Answers 
                         answers={question.answers} 
-                        key={question.id}
                     />
                     <hr></hr>
                 </div>

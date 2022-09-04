@@ -9,7 +9,7 @@ import { nanoid } from 'nanoid'
 
 function App() {
   const [click, setClick] = useState(false)
-  const [allQuiz, setAllQuiz] = useState()
+  const [allQuiz, setAllQuiz] = useState([])
 
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=10")

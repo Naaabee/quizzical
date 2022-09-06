@@ -53,6 +53,7 @@ hr {
     border: 0.8px solid #4D5B9E;
     margin-right: 14px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .question--button {
@@ -65,4 +66,15 @@ hr {
     font-size: 10px;
     background-color: #4D5B9E;
     color: white;
+    cursor: pointer;
 }
+
+.question--button:hover {
+    transform: scale(1.1);
+}
+
+.question--button:active {
+    background-color: #414d86;
+    scale: 1.1;
+    transform: translateY(1px);
+  }

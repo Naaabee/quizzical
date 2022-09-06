@@ -10,6 +10,10 @@ import { nanoid } from 'nanoid'
 function App() {
   const [click, setClick] = useState(false)
   const [allQuiz, setAllQuiz] = useState([])
+  const [game, setGame] = useState({
+    isOver: false,
+    points: 0,
+  })
 
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=10")
@@ -26,6 +30,15 @@ function App() {
   }, [])
 
 
+  function endGame() {
+    setGame(prevState => {
+      return {
+        ...prevState,
+        isOver: true,
+      }
+    })
+  }
+
   function handleClick() {
     setClick(prevState => !prevState)
   }
@@ -40,7 +53,8 @@ function App() {
         {click ?
           <Quizpage
             allQuiz={allQuiz}
-
+            game={game}
+            endGame={endGame}
           /> :
           <Startpage handleClick={handleClick} />
         }

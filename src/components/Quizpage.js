@@ -7,6 +7,8 @@ import arrayShuffle from 'array-shuffle'
 
 export default function Quizpage({ allQuiz, game, endGame }) {
     
+    const [disable, setDisable] = useState(false)
+
     const data = allQuiz.map(quiz => {
         return {
             question: quiz.question,
@@ -15,7 +17,8 @@ export default function Quizpage({ allQuiz, game, endGame }) {
             answers: arrayShuffle(quiz.answers),
             correct_answer: quiz.correct_answer,
             userAnswer: '',
-            isCorrect: false
+            isCorrect: false,
+            
         }
     })
 
@@ -40,6 +43,7 @@ export default function Quizpage({ allQuiz, game, endGame }) {
     function checkCorrectAnswer() {
         questionState.map(question => {
             endGame()
+            setDisable(true)
              if (question.userAnswer === question.correct_answer) {
                return question.isCorrect = true
             } else {
@@ -51,6 +55,7 @@ export default function Quizpage({ allQuiz, game, endGame }) {
 
 
     const questions = questionState.map(question => {
+        // console.log(question)
         return (
             <div className='question--tab' key={question.id}>
                     <h4>{decode(question.question)}</h4>
@@ -60,6 +65,7 @@ export default function Quizpage({ allQuiz, game, endGame }) {
                         saveSelectedAnswer={saveSelectedAnswer}
                         isOver={game.isOver}
                         isCorrect={question.isCorrect}
+                        isDisabled={disable}
                     />
                     <hr></hr>
                 </div>

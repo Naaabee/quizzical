@@ -3,9 +3,8 @@ import { decode } from 'html-entities'
 import { nanoid } from 'nanoid'
 
 
-export default function Answers({ answers, questionId, saveSelectedAnswer, isOver, isCorrect }) {
+export default function Answers({ answers, questionId, saveSelectedAnswer, isOver, isCorrect, disable }) {
 
-    console.log(isCorrect)
 
     const answer = answers.map(ans => {
         return {
@@ -38,13 +37,24 @@ export default function Answers({ answers, questionId, saveSelectedAnswer, isOve
         if (isOver && ans.isSelect && isCorrect) {
             return {
                 backgroundColor: "#94D7A2",
-                border: "0.8px solid #94D7A2"
-
+                border: "0.8px solid #94D7A2",
+                pointerEvents: 'none'
+            }
+        } else if (isOver && ans.isSelect && !isCorrect) { 
+            return {
+                backgroundColor: "#F8BCBC",
+                border: "0.8px solid #F8BCBC",
+                pointerEvents: 'none'
             }
         } else if (!isOver && ans.isSelect) {
             return {
                 backgroundColor: "#D6DBF5",
-                border: "0.8px solid #D6DBF5"
+                border: "0.8px solid #D6DBF5",
+                
+            }
+        } else if (isOver) {
+            return {
+                pointerEvents: 'none'
             }
         } else {
             return
